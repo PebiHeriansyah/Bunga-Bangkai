@@ -1,0 +1,134 @@
+/* Tampilan dasar */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100vh;
+    background: linear-gradient(to bottom, #87CEEB, #32CD32);
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Kontainer bunga */
+.tulip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: sway 3s infinite ease-in-out alternate;
+}
+
+/* Batang lebih panjang dan realistis */
+.stem {
+    width: 14px;
+    height: 0;
+    background: linear-gradient(to bottom, #228B22, #006400);
+    position: absolute;
+    bottom: 80px;
+    border-radius: 6px;
+    animation: growStem 2s ease-out forwards;
+}
+
+/* Daun dengan efek bayangan */
+.leaves {
+    position: absolute;
+    bottom: 180px;
+}
+
+.leaf {
+    width: 70px;
+    height: 120px;
+    background: linear-gradient(to right, #228B22, #006400);
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    animation: growLeaves 1.5s ease-out 1.5s forwards;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Posisi daun kiri & kanan */
+.leaf.left {
+    transform: rotate(-35deg);
+    left: -60px;
+}
+
+.leaf.right {
+    transform: rotate(35deg);
+    right: -60px;
+}
+
+/* Kelopak bunga lebih besar, naik ke atas, dan lebih detail */
+.flower {
+    position: absolute;
+    bottom: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: bloom 2s ease-out 2s forwards;
+}
+
+/* Bentuk Kelopak lebih realistis */
+.petal {
+    width: 80px;
+    height: 140px;
+    background: linear-gradient(to bottom, #FF1493, #B22222);
+    border-radius: 50%;
+    position: absolute;
+    transform-origin: bottom center;
+    box-shadow: inset 3px -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Posisi kelopak dengan variasi */
+.petal1 {
+    transform: rotate(0deg);
+}
+.petal2 {
+    transform: rotate(-25deg);
+    left: -30px;
+}
+.petal3 {
+    transform: rotate(25deg);
+    right: -30px;
+}
+.petal4 {
+    transform: rotate(-50deg);
+    left: -50px;
+    opacity: 0.8;
+}
+.petal5 {
+    transform: rotate(50deg);
+    right: -50px;
+    opacity: 0.8;
+}
+
+/* Animasi batang tumbuh */
+@keyframes growStem {
+    from { height: 0; }
+    to { height: 280px; }
+}
+
+/* Animasi daun muncul */
+@keyframes growLeaves {
+    from { opacity: 0; transform: scaleY(0); }
+    to { opacity: 1; transform: scaleY(1); }
+}
+
+/* Animasi bunga mekar */
+@keyframes bloom {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Animasi goyangan bunga */
+@keyframes sway {
+    0% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 600px) {
+    .tulip {
+        transform: scale(0.7);
+    }
+}
